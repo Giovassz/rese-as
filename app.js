@@ -578,20 +578,24 @@ function initIndexFeed() {
       return;
     }
 
+    const latestReviewId = localStorage.getItem("coffeetalk_latest_review_id") || "";
+
     reviewsContainer.innerHTML = filtered.map((item) => {
+      const isNewlyPosted = item.id === latestReviewId || item.date === "Recién publicado";
       const amenitiesHtml = item.amenities && item.amenities.length
         ? item.amenities.slice(0, 3).map(a => `<span class="amenity-tag">${SVG_ICONS.check} ${a}</span>`).join("")
         : "";
 
       return `
-        <article class="review-card" data-id="${item.id}">
+        <article class="review-card ${isNewlyPosted ? 'review-card-newly-posted' : ''}" data-id="${item.id}">
           <div class="review-card-media">
             <img src="${item.imageUrl}" alt="${item.cafeName}" class="review-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'">
             <span class="badge ${getBadgeClass(item.category)} review-card-badge">${item.category}</span>
+            ${isNewlyPosted ? `<span class="badge" style="position: absolute; top: 0.85rem; right: 0.85rem; background: var(--primary-accent); color: #fff; font-weight: 700; z-index: 3; box-shadow: var(--shadow-sm);">★ Tu Reseña Publicada</span>` : `
             <div class="review-card-rating-float">
               ${SVG_ICONS.star}
               <span>${Number(item.rating).toFixed(1)}</span>
-            </div>
+            </div>`}
           </div>
           
           <div class="review-card-body">
@@ -639,6 +643,14 @@ function initIndexFeed() {
         openReviewModal(btn.getAttribute("data-id"));
       });
     });
+
+    if (latestReviewId) {
+      setTimeout(() => {
+        const feedEl = document.getElementById("reviews-feed-container");
+        if (feedEl) feedEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        localStorage.removeItem("coffeetalk_latest_review_id");
+      }, 400);
+    }
   }
 
   filterChips.forEach((chip) => {
@@ -945,14 +957,15 @@ function initCreateReviewForm() {
       StorageService.saveUserProfile(userProfile);
     }
 
-    // Save flash message in both localStorage and sessionStorage
-    const flashMsg = `¡Tu reseña de "${cafeName}" se publicó con éxito y está visible en el feed!`;
+    // Save flash message and latest review ID
+    const flashMsg = `¡Tu reseña de "${cafeName}" se publicó con éxito! Ya puedes verla destacada al inicio del feed.`;
     try {
+      localStorage.setItem("coffeetalk_latest_review_id", newReview.id);
       localStorage.setItem("coffeetalk_flash_toast", flashMsg);
       sessionStorage.setItem("coffeetalk_flash_toast", flashMsg);
     } catch (err) {}
 
-    window.location.href = "index.html";
+    window.location.href = "index.html#reviews-feed-container";
   });
 }
 
@@ -1358,6 +1371,38 @@ function openCafeModal(cafeId) {
         </h4>
         <div>${menuRows}</div>
       </div>
+
+      ${(() => {
+        const cafeReviews = StorageService.getReviews().filter(r => 
+          (r.cafeName && cafe.name && (r.cafeName.toLowerCase().includes(cafe.name.toLowerCase()) || cafe.name.toLowerCase().includes(r.cafeName.toLowerCase())))
+        );
+        return cafeReviews.length > 0
+          ? `
+            <div style="margin-bottom: 1.5rem; background: var(--bg-light); border: 1px solid var(--border-craft); border-radius: var(--radius-md); padding: 1rem;">
+              <h4 style="font-family: var(--font-editorial); font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+                <span style="display: flex; align-items: center; gap: 0.4rem;">${SVG_ICONS.check} Reseñas de la Comunidad</span>
+                <span style="font-size: 0.8rem; font-family: var(--font-sans); color: var(--secondary-blue); font-weight: 700;">${cafeReviews.length} registradas</span>
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 0.65rem; max-height: 200px; overflow-y: auto;">
+                ${cafeReviews.map(cr => `
+                  <div style="background: #ffffff; border: 1px solid var(--border-craft); border-radius: var(--radius-sm); padding: 0.7rem 0.85rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem;">
+                      <span style="font-weight: 700; font-size: 0.875rem; color: var(--primary-dark);">${cr.author}</span>
+                      <span style="font-size: 0.8rem; color: var(--gold-star); font-weight: 700;">★ ${Number(cr.rating).toFixed(1)}</span>
+                    </div>
+                    <p style="font-weight: 600; font-size: 0.85rem; color: var(--primary-accent); margin-bottom: 0.2rem;">"${cr.title}"</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">${cr.content}</p>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `
+          : `
+            <div style="margin-bottom: 1.5rem; background: var(--sand-tone); border: 1px dashed var(--border-craft); border-radius: var(--radius-md); padding: 0.85rem 1rem; text-align: center;">
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Sé el primero en compartir tu experiencia sensorial sobre este café.</p>
+            </div>
+          `;
+      })()}
 
       <div style="display: flex; gap: 0.75rem; justify-content: flex-end; padding-top: 1rem; border-top: 1px solid var(--border-craft); flex-wrap: wrap;">
         <button class="btn btn-outline btn-sm" onclick="document.getElementById('cafe-details-modal').classList.remove('active')">Cerrar</button>
