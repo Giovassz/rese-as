@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publicar Reseña Técnica | CoffeeTalk (Ruta del Café)</title>
   <meta name="description" content="Comparte tu evaluación técnica sobre extracción, tueste, ambiente y servicios en cafeterías locales.">
-  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="stylesheet" href="styles.css?v=2.1">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23C86D51'><path d='M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'/></svg>">
 </head>
 <body>
@@ -58,12 +58,6 @@
               Publicar Reseña
             </a>
           </li>
-          <li>
-            <a href="perfil.html" class="nav-item-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              Mi Perfil
-            </a>
-          </li>
         </ul>
         <div class="nav-action-btns">
           <a href="cafeterias.html" class="btn btn-outline btn-sm">Ver Directorio</a>
@@ -111,12 +105,6 @@
           Publicar Reseña
         </a>
       </li>
-      <li>
-        <a href="perfil.html" class="mobile-nav-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          Mi Perfil Cafetero
-        </a>
-      </li>
     </ul>
   </aside>
 
@@ -125,11 +113,11 @@
     <div class="container">
       <div class="form-hero-badge">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-        <span>Registro de Evaluación Sensorial</span>
+        <span>Plataforma 100% Anónima</span>
       </div>
-      <h1 class="form-hero-title">Comparte tu Experiencia Cafetera</h1>
+      <h1 class="form-hero-title">Publica tu Reseña Anónima</h1>
       <p class="form-hero-sub">
-        Contribuye a la base de conocimiento comunitaria describiendo las notas en taza, calibración del molino y calidez del espacio.
+        Comparte tu evaluación técnica sobre extracción, tueste y ambiente con total privacidad. No requiere registro ni datos personales.
       </p>
     </div>
   </section>
@@ -226,13 +214,26 @@
               </div>
             </div>
 
-            <!-- Row 5: URL de Foto de la Visita -->
+            <!-- Row 5: Firma Anónima (Opcional) -->
+            <div class="form-grid-row">
+              <div class="form-group">
+                <label for="review-author-input" class="form-label">
+                  Firma / Seudónimo Anónimo
+                </label>
+                <input type="text" id="review-author-input" class="form-control" placeholder="Catador Anónimo (por defecto)">
+                <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 0.35rem;">
+                  🔒 Publicación 100% anónima. No se recopilan cuentas ni datos personales.
+                </span>
+              </div>
+            </div>
+
+            <!-- Row 6: URL o ruta de Foto de la Visita -->
             <div class="form-grid-row">
               <div class="form-group">
                 <label for="review-image-input" class="form-label">
-                  URL de Imagen de la Visita (Opcional)
+                  Ruta o URL de Imagen de la Visita (Opcional)
                 </label>
-                <input type="url" id="review-image-input" class="form-control" placeholder="https://ejemplo.com/foto-cafe.jpg (Si se omite, se asignará fotografía de especialidad automática)">
+                <input type="text" id="review-image-input" class="form-control" placeholder="images/cafe-v60.jpg o URL (Si se omite, se asignará images/default.jpg automáticamente)">
                 <div id="image-preview-box" style="display: none; margin-top: 0.75rem;"></div>
               </div>
             </div>
@@ -346,6 +347,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.0"></script>
+  <script src="app.js?v=2.1"></script>
 </body>
 </html>

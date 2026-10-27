@@ -7,6 +7,8 @@
 // 1. DEFAULT DATA SEEDING (Specialty Coffee Shops & Reviews)
 // ==========================================================================
 
+const ANONYMOUS_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23C86D51'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+
 const DEFAULT_REVIEWS = [
   {
     id: "rev-1",
@@ -16,11 +18,11 @@ const DEFAULT_REVIEWS = [
     rating: 5,
     title: "Flat White con perfil de tueste impecable",
     content: "Espacio de tostado artesanal a la vista. El Flat White elaborado con granos proceso honey de Pluma Hidalgo, Oaxaca, destaca por una textura cremosa de microespuma y un balance floral exquisito.",
-    author: "Sofía Martínez",
-    authorHandle: "@coffeelover_merida",
-    authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    author: "Catador Anónimo",
+    authorHandle: "@catador_v60",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 2 días",
-    imageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/cafe-v60.jpg",
     amenities: ["WiFi Rápido", "Pet Friendly", "Enchufes", "V60 / Chemex", "Tostaduría"]
   },
   {
@@ -31,11 +33,11 @@ const DEFAULT_REVIEWS = [
     rating: 4.8,
     title: "Espacio óptimo para productividad y café de origen",
     content: "Conexión simétrica de 200 Mbps y estaciones ergonómicas. Su Cold Brew con infusión de nitrógeno ofrece un cuerpo sedoso y notas a cacao tostado, ideal para sesiones largas de trabajo.",
-    author: "Carlos Mendoza",
-    authorHandle: "@carlos_tech_coffee",
-    authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    author: "Barista Anónimo",
+    authorHandle: "@barista_anonimo",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 4 días",
-    imageUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/cold-brew.jpg",
     amenities: ["WiFi 200Mbps", "Enchufes en cada mesa", "Opciones Veganas", "Ambiente Silencioso"]
   },
   {
@@ -46,11 +48,11 @@ const DEFAULT_REVIEWS = [
     rating: 5,
     title: "Cátedra sensorial en Sifón Japonés y V60",
     content: "Extracción lenta en Sifón con varietal Geisha de Chiapas. Una taza cristalina con acidez brillante, notas florales a jazmín y durazno blanco. Entorno de casona colonial con acústica serena.",
-    author: "Elena Rostand",
-    authorHandle: "@elena_sensorial",
-    authorAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    author: "Explorador de Café",
+    authorHandle: "@explorador_cafe",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 1 semana",
-    imageUrl: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/latte-art.jpg",
     amenities: ["Pet Friendly", "Sifón Japonés", "Chemex", "Terraza Arbolada"]
   },
   {
@@ -61,11 +63,11 @@ const DEFAULT_REVIEWS = [
     rating: 4.9,
     title: "La Marzocco Strada y un Cortado celestial",
     content: "Espresso calibrado con crema elástica y retrogusto a chocolate amargo y almendra tostada. Acompañado de repostería fina de pistache. Atención técnica de baristas certificados.",
-    author: "Diego Beltrán",
-    authorHandle: "@diego_espresso",
-    authorAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    author: "Amante del Espresso",
+    authorHandle: "@espresso_lover",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 1 semana",
-    imageUrl: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/cafe-v60.jpg",
     amenities: ["Espresso Bar", "Repostería Fina", "Acepta Tarjeta", "Climatizado"]
   },
   {
@@ -76,11 +78,11 @@ const DEFAULT_REVIEWS = [
     rating: 4.7,
     title: "Croissants de fermentación lenta y café de altura",
     content: "Panificación artesanal con masa madre horneada al amanecer junto a un latte servido a temperatura óptima de emulsión (65°C). Ambiente luminoso y arbolado.",
-    author: "Valentina Ríos",
-    authorHandle: "@valen_cafecito",
-    authorAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+    author: "Viajero Anónimo",
+    authorHandle: "@viajero_anonimo",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 2 semanas",
-    imageUrl: "https://images.unsplash.com/photo-1481833761820-0509d32170dd?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/default.jpg",
     amenities: ["Pet Friendly", "Opciones Veganas", "Panadería Artesanal", "Terraza"]
   },
   {
@@ -91,11 +93,11 @@ const DEFAULT_REVIEWS = [
     rating: 5,
     title: "Tostado fresco de origen al pie de la montaña",
     content: "Café con denominación de origen Coatepec. Tueste medio recién empacado y cold brew con notas a naranja confitada y panela. Venta en grano entero o molienda según método.",
-    author: "Sofía Martínez",
-    authorHandle: "@coffeelover_merida",
-    authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    author: "Catador de Altura",
+    authorHandle: "@catador_altura",
+    authorAvatar: ANONYMOUS_AVATAR,
     date: "Hace 3 semanas",
-    imageUrl: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "images/latte-art.jpg",
     amenities: ["Venta en Grano", "Catas Guiadas", "Pet Friendly", "V60 / Chemex"]
   }
 ];
@@ -269,11 +271,11 @@ const StorageService = {
       rating: typeof r.rating === "number" ? r.rating : (parseFloat(r.rating) || 5.0),
       title: r.title || "Excelente experiencia cafetera",
       content: r.content || "Sin descripción adicional.",
-      author: r.author || "Aficionado al Café",
-      authorHandle: r.authorHandle || "@coffeelover",
-      authorAvatar: r.authorAvatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+      author: r.author || "Catador Anónimo",
+      authorHandle: r.authorHandle || "@anonimo",
+      authorAvatar: r.authorAvatar || ANONYMOUS_AVATAR,
       date: r.date || "Recién publicado",
-      imageUrl: r.imageUrl || "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+      imageUrl: r.imageUrl || "images/default.jpg",
       amenities: Array.isArray(r.amenities) && r.amenities.length ? r.amenities : ["Café de Especialidad"]
     }));
   },
@@ -382,29 +384,14 @@ const StorageService = {
   },
 
   getUserProfile() {
-    const raw = localStorage.getItem("coffeetalk_user_profile");
-    if (!raw) {
-      const defaultUser = {
-        name: "Sofía Martínez",
-        handle: "@coffeelover_merida",
-        level: "Barista Master Specialist",
-        bio: "Catadora y entusiasta del café de especialidad. Exploradora de perfiles de tueste claro y barras con métodos artesanales V60 y Chemex.",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
-        stats: {
-          reviews: 18,
-          favorites: 42,
-          avgRating: "4.9"
-        }
-      };
-      localStorage.setItem("coffeetalk_user_profile", JSON.stringify(defaultUser));
-      return defaultUser;
-    }
-    return JSON.parse(raw);
+    return {
+      name: "Catador Anónimo",
+      handle: "@anonimo",
+      avatar: ANONYMOUS_AVATAR
+    };
   },
 
-  saveUserProfile(profile) {
-    localStorage.setItem("coffeetalk_user_profile", JSON.stringify(profile));
-  }
+  saveUserProfile() {}
 };
 
 // ==========================================================================
@@ -640,7 +627,7 @@ function initIndexFeed() {
       return `
         <article class="review-card ${isNewlyPosted ? 'review-card-newly-posted' : ''}" data-id="${item.id}">
           <div class="review-card-media">
-            <img src="${item.imageUrl}" alt="${item.cafeName}" class="review-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'">
+            <img src="${item.imageUrl}" alt="${item.cafeName}" class="review-card-img" loading="lazy" onerror="this.src='images/default.jpg'">
             <span class="badge ${getBadgeClass(item.category)} review-card-badge">${item.category}</span>
             ${isNewlyPosted ? `<span class="badge" style="position: absolute; top: 0.85rem; right: 0.85rem; background: var(--primary-accent); color: #fff; font-weight: 700; z-index: 3; box-shadow: var(--shadow-sm);">★ Tu Reseña Publicada</span>` : `
             <div class="review-card-rating-float">
@@ -981,7 +968,7 @@ function initCreateReviewForm() {
     }
 
     if (!imageUrl) {
-      imageUrl = "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80";
+      imageUrl = "images/default.jpg";
     }
 
     const checkedAmenities = [];
@@ -992,10 +979,12 @@ function initCreateReviewForm() {
     const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Publicando reseña en la nube...";
+      submitBtn.textContent = "Publicando reseña anónima...";
     }
 
-    const userProfile = StorageService.getUserProfile();
+    const authorInput = document.getElementById("review-author-input");
+    const author = (authorInput && authorInput.value.trim()) ? authorInput.value.trim() : "Catador Anónimo";
+    const authorHandle = "@" + author.toLowerCase().replace(/[^a-z0-9_]/g, "_").slice(0, 15);
 
     const newReview = {
       id: "rev-" + Date.now(),
@@ -1005,20 +994,15 @@ function initCreateReviewForm() {
       rating: parseFloat(selectedRating) || 5.0,
       title,
       content,
-      author: userProfile.name || "Sofía Martínez",
-      authorHandle: userProfile.handle || "@coffeelover_merida",
-      authorAvatar: userProfile.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+      author: author,
+      authorHandle: authorHandle,
+      authorAvatar: ANONYMOUS_AVATAR,
       date: "Recién publicado",
-      imageUrl,
+      imageUrl: imageUrl || "images/default.jpg",
       amenities: checkedAmenities.length ? checkedAmenities : ["Café de Especialidad"]
     };
 
     await StorageService.addReview(newReview);
-
-    if (userProfile && userProfile.stats) {
-      userProfile.stats.reviews = (userProfile.stats.reviews || 0) + 1;
-      StorageService.saveUserProfile(userProfile);
-    }
 
     // Save flash message and latest review ID
     const flashMsg = `¡Tu reseña de "${cafeName}" se publicó con éxito! Ya puedes verla destacada al inicio del feed.`;
@@ -1033,207 +1017,10 @@ function initCreateReviewForm() {
 }
 
 // ==========================================================================
-// 7. PERFIL.HTML (User Profile, Tabs & Achievements)
+// 7. PERFIL REMOVED - PLATAFORMA 100% ANÓNIMA
 // ==========================================================================
 
-function initUserProfilePage() {
-  const profileContainer = document.getElementById("profile-page-content");
-  if (!profileContainer) return;
-
-  const userProfile = StorageService.getUserProfile();
-  const allReviews = StorageService.getReviews();
-  const allCafes = StorageService.getCafes();
-  const favorites = StorageService.getFavorites();
-
-  const userReviews = allReviews.filter(r => r.author === userProfile.name);
-
-  const nameEl = document.getElementById("profile-name-text");
-  const handleEl = document.getElementById("profile-handle-text");
-  const bioEl = document.getElementById("profile-bio-text");
-  const avatarEl = document.getElementById("profile-avatar-img");
-  const countReviewsEl = document.getElementById("stat-reviews-count");
-  const countFavsEl = document.getElementById("stat-favs-count");
-  const avgRatingEl = document.getElementById("stat-avg-rating");
-
-  if (nameEl) nameEl.textContent = userProfile.name;
-  if (handleEl) handleEl.textContent = userProfile.handle;
-  if (bioEl) bioEl.textContent = userProfile.bio;
-  if (avatarEl) avatarEl.src = userProfile.avatar;
-  if (countReviewsEl) countReviewsEl.textContent = userReviews.length || userProfile.stats.reviews;
-  if (countFavsEl) countFavsEl.textContent = favorites.length;
-  if (avgRatingEl) avgRatingEl.textContent = userProfile.stats.avgRating;
-
-  // Render Tab 1: Mis Reseñas
-  const userReviewsGrid = document.getElementById("tab-user-reviews-grid");
-  if (userReviewsGrid) {
-    if (userReviews.length === 0) {
-      userReviewsGrid.innerHTML = `
-        <div class="feed-empty-state" style="grid-column: 1 / -1;">
-          <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Aún no has compartido ninguna reseña cafetera.</p>
-          <a href="crear-resena.html" class="btn btn-primary btn-sm">+ Publicar mi primera reseña</a>
-        </div>
-      `;
-    } else {
-      userReviewsGrid.innerHTML = userReviews.map(item => `
-        <article class="review-card">
-          <div class="review-card-media">
-            <img src="${item.imageUrl}" alt="${item.cafeName}" class="review-card-img" loading="lazy">
-            <span class="badge badge-terracotta review-card-badge">${item.category}</span>
-            <div class="review-card-rating-float">${SVG_ICONS.star} ${Number(item.rating).toFixed(1)}</div>
-          </div>
-          <div class="review-card-body">
-            <h3 class="review-cafe-name">${item.cafeName}</h3>
-            <p class="review-cafe-location" style="margin-bottom: 0.5rem;">${SVG_ICONS.pin} ${item.location}</p>
-            <h4 class="review-title-heading">"${item.title}"</h4>
-            <p class="review-card-excerpt">${item.content}</p>
-            <div class="review-card-author-footer">
-              <span class="review-date">${item.date}</span>
-              <button class="btn btn-outline btn-sm read-full-review-btn" data-id="${item.id}">Ver Reseña</button>
-            </div>
-          </div>
-        </article>
-      `).join("");
-
-      userReviewsGrid.querySelectorAll(".read-full-review-btn").forEach(btn => {
-        btn.addEventListener("click", () => openReviewModal(btn.getAttribute("data-id")));
-      });
-    }
-  }
-
-  // Render Tab 2: Cafeterías Guardadas / Favoritas
-  const favCafesGrid = document.getElementById("tab-favorites-grid");
-  if (favCafesGrid) {
-    const favoriteCafes = allCafes.filter(c => favorites.includes(c.id));
-    if (favoriteCafes.length === 0) {
-      favCafesGrid.innerHTML = `
-        <div class="feed-empty-state" style="grid-column: 1 / -1;">
-          <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">No tienes cafeterías guardadas aún en tu lista de deseos.</p>
-          <a href="cafeterias.html" class="btn btn-secondary btn-sm">Explorar Directorio</a>
-        </div>
-      `;
-    } else {
-      favCafesGrid.innerHTML = favoriteCafes.map(cafe => `
-        <article class="cafe-directory-card">
-          <div class="cafe-card-thumb-wrapper">
-            <img src="${cafe.imageUrl}" alt="${cafe.name}" class="cafe-card-thumb-img">
-            <button class="cafe-fav-btn is-favorite" data-cafe-id="${cafe.id}" title="Quitar de favoritos">
-              ${SVG_ICONS.heartFilled}
-            </button>
-          </div>
-          <div class="cafe-directory-info">
-            <h3 class="cafe-name-title">${cafe.name}</h3>
-            <p class="cafe-address-line">${SVG_ICONS.pin} ${cafe.address}</p>
-            <div class="cafe-card-footer">
-              <span style="font-weight: 700; color: var(--gold-star); display: inline-flex; align-items: center; gap: 0.3rem;">
-                ${SVG_ICONS.star} ${cafe.rating} (${cafe.reviewsCount})
-              </span>
-              <button class="btn btn-primary btn-sm view-cafe-details-btn" data-cafe-id="${cafe.id}">Ver Menú / Info</button>
-            </div>
-          </div>
-        </article>
-      `).join("");
-
-      favCafesGrid.querySelectorAll(".cafe-fav-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const cafeId = btn.getAttribute("data-cafe-id");
-          StorageService.toggleFavorite(cafeId);
-          showToast("Eliminado de tus cafeterías guardadas");
-          initUserProfilePage();
-        });
-      });
-
-      favCafesGrid.querySelectorAll(".view-cafe-details-btn").forEach(btn => {
-        btn.addEventListener("click", () => openCafeModal(btn.getAttribute("data-cafe-id")));
-      });
-    }
-  }
-
-  // Tabs switching logic
-  const tabButtons = document.querySelectorAll(".tab-nav-button");
-  const tabPanes = document.querySelectorAll(".tab-pane-content");
-
-  tabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const targetTab = button.getAttribute("data-tab");
-      tabButtons.forEach(b => b.classList.remove("active"));
-      tabPanes.forEach(p => p.classList.remove("active"));
-
-      button.classList.add("active");
-      const targetPane = document.getElementById(targetTab);
-      if (targetPane) targetPane.classList.add("active");
-    });
-  });
-
-  const editProfileBtn = document.getElementById("edit-profile-btn");
-  if (editProfileBtn) {
-    editProfileBtn.addEventListener("click", openEditProfileModal);
-  }
-}
-
-function openEditProfileModal() {
-  const user = StorageService.getUserProfile();
-
-  let modal = document.getElementById("edit-profile-modal");
-  if (!modal) {
-    modal = document.createElement("div");
-    modal.id = "edit-profile-modal";
-    modal.className = "modal-overlay";
-    document.body.appendChild(modal);
-  }
-
-  modal.innerHTML = `
-    <div class="modal-box">
-      <button class="modal-close-btn" id="modal-close-profile">&times;</button>
-      <h3 style="font-family: var(--font-editorial); font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 1.25rem;">Editar Mi Perfil Cafetero</h3>
-      
-      <form id="edit-profile-form" style="display: flex; flex-direction: column; gap: 1rem;">
-        <div class="form-group">
-          <label class="form-label">Nombre Completo</label>
-          <input type="text" id="edit-user-name" class="form-control" value="${user.name}" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nombre de Usuario (@)</label>
-          <input type="text" id="edit-user-handle" class="form-control" value="${user.handle}" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Biografía Cafetera</label>
-          <textarea id="edit-user-bio" class="form-control" style="min-height: 90px;">${user.bio}</textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label">URL de Avatar</label>
-          <input type="url" id="edit-user-avatar" class="form-control" value="${user.avatar}">
-        </div>
-        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
-          <button type="button" class="btn btn-outline btn-sm" id="cancel-edit-profile-btn">Cancelar</button>
-          <button type="submit" class="btn btn-primary btn-sm">Guardar Cambios</button>
-        </div>
-      </form>
-    </div>
-  `;
-
-  modal.classList.add("active");
-
-  const closeBtn = document.getElementById("modal-close-profile");
-  const cancelBtn = document.getElementById("cancel-edit-profile-btn");
-  const close = () => modal.classList.remove("active");
-
-  if (closeBtn) closeBtn.addEventListener("click", close);
-  if (cancelBtn) cancelBtn.addEventListener("click", close);
-
-  const editForm = document.getElementById("edit-profile-form");
-  editForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    user.name = document.getElementById("edit-user-name").value.trim();
-    user.handle = document.getElementById("edit-user-handle").value.trim();
-    user.bio = document.getElementById("edit-user-bio").value.trim();
-    user.avatar = document.getElementById("edit-user-avatar").value.trim() || user.avatar;
-
-    StorageService.saveUserProfile(user);
-    close();
-    showToast("Perfil actualizado correctamente", SVG_ICONS.user);
-    initUserProfilePage();
-  });
-}
+function initUserProfilePage() {}
 
 // ==========================================================================
 // 8. CAFETERIAS.HTML (Directory, Filters, Menu Modal & Favorites)
@@ -1523,7 +1310,6 @@ document.addEventListener("DOMContentLoaded", () => {
   StorageService.getReviews();
   StorageService.getCafes();
   StorageService.getFavorites();
-  StorageService.getUserProfile();
 
   initNavigation();
   initTriviaWidget();
@@ -1531,7 +1317,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initIndexFeed();
   initCreateReviewForm();
-  initUserProfilePage();
   initCafesDirectory();
 });
 
