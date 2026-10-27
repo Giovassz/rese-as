@@ -228,8 +228,13 @@ const DEFAULT_CAFES = [
 ];
 
 // ==========================================================================
-// 2. STORAGE CONTROLLER
+// 2. STORAGE & AWS CLOUD CONTROLLER (100% Free Tier: DynamoDB + Lambda URL)
 // ==========================================================================
+
+const AWS_CONFIG = {
+  // Function URL pública de AWS Lambda (DynamoDB + Lambda 100% Free Tier de por vida):
+  apiUrl: "https://vxi7zw3gxy626pfdchmfvzx6ui0vcepq.lambda-url.us-east-1.on.aws/"
+};
 
 const StorageService = {
   getReviews() {
@@ -273,13 +278,59 @@ const StorageService = {
     }));
   },
 
-  addReview(newReview) {
+  async fetchCloudReviews() {
+    if (!AWS_CONFIG.apiUrl) return this.getReviews();
+    try {
+      const response = await fetch(AWS_CONFIG.apiUrl, { method: "GET" });
+      if (response.ok) {
+        const cloudReviews = await response.json();
+        if (Array.isArray(cloudReviews) && cloudReviews.length > 0) {
+          const localList = this.getReviews();
+          const map = new Map();
+          // Las reseñas alojadas en AWS tienen prioridad
+          cloudReviews.forEach((item) => {
+            if (item && item.id) map.set(item.id, item);
+          });
+          localList.forEach((item) => {
+            if (item && item.id && !map.has(item.id)) map.set(item.id, item);
+          });
+          const merged = Array.from(map.values());
+          localStorage.setItem("coffeetalk_reviews", JSON.stringify(merged));
+          return merged;
+        }
+      }
+    } catch (err) {
+      console.warn("Aviso: No se pudo sincronizar con AWS Cloud, usando datos locales:", err);
+    }
+    return this.getReviews();
+  },
+
+  async addReview(newReview) {
     const reviews = this.getReviews();
-    reviews.unshift(newReview);
+    const existingIndex = reviews.findIndex(r => r.id === newReview.id);
+    if (existingIndex >= 0) {
+      reviews[existingIndex] = newReview;
+    } else {
+      reviews.unshift(newReview);
+    }
+
     try {
       localStorage.setItem("coffeetalk_reviews", JSON.stringify(reviews));
     } catch (e) {
       console.error("Error saving review to localStorage:", e);
+    }
+
+    // Sincronizar en segundo plano con AWS (DynamoDB vía Lambda Function URL)
+    if (AWS_CONFIG.apiUrl) {
+      try {
+        await fetch(AWS_CONFIG.apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newReview)
+        });
+      } catch (err) {
+        console.warn("Aviso: No se pudo enviar a AWS, pero la reseña quedó guardada en el dispositivo:", err);
+      }
     }
   },
 
@@ -681,6 +732,12 @@ function initIndexFeed() {
   };
 
   renderReviews();
+
+  if (AWS_CONFIG.apiUrl) {
+    StorageService.fetchCloudReviews().then(() => {
+      renderReviews();
+    });
+  }
 }
 
 function openReviewModal(reviewId) {
@@ -890,7 +947,7 @@ function initCreateReviewForm() {
     });
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const cafeName = (cafeNameInput ? cafeNameInput.value : "").trim();
@@ -932,6 +989,12 @@ function initCreateReviewForm() {
       checkedAmenities.push(cb.value);
     });
 
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Publicando reseña en la nube...";
+    }
+
     const userProfile = StorageService.getUserProfile();
 
     const newReview = {
@@ -950,7 +1013,7 @@ function initCreateReviewForm() {
       amenities: checkedAmenities.length ? checkedAmenities : ["Café de Especialidad"]
     };
 
-    StorageService.addReview(newReview);
+    await StorageService.addReview(newReview);
 
     if (userProfile && userProfile.stats) {
       userProfile.stats.reviews = (userProfile.stats.reviews || 0) + 1;

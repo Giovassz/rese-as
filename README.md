@@ -32,6 +32,7 @@ Diseñado con una estética artesanal cálida inspirada en la cultura del café 
 ## 📁 Estructura del Proyecto
 
 ```text
+├── PROYECTO_1_AWS.md   # Guía de implementación del Proyecto 1 en AWS (Completado)
 ├── index.html          # Feed principal, filtros dinámicos y widgets de trivia
 ├── cafeterias.html     # Directorio con filtros por zona, horario y categoría
 ├── crear-resena.html   # Formulario de publicación con autofill desde directorio
@@ -40,6 +41,20 @@ Diseñado con una estética artesanal cálida inspirada en la cultura del café 
 ├── app.js              # Lógica de datos, StorageService, navegación y eventos
 └── logo.jpg            # Emblema oficial generado para CoffeeTalk
 ```
+
+---
+
+## ☁️ Proyecto 1: Notificación de Edición de Archivos en Sitio Productivo (AWS)
+
+> **Estado:** ✅ **Completado / Implementado**  
+> Documentación técnica completa disponible en: [PROYECTO_1_AWS.md](file:///c:/Users/giova/Downloads/Reseñas/PROYECTO_1_AWS.md)
+
+- **Costo:** 100% dentro de la **Capa Gratuita (Free Tier)** de AWS (S3 5GB, SNS 1M pubs/1k emails, Lambda 1M invocaciones).
+- **Componentes clave:**
+  - **S3 Static Website Hosting** en `us-east-1` (`blog-principal-equipo-us-east-1`).
+  - **S3 Versioning** para protección contra eliminación o edición accidental.
+  - **Cross-Region Replication (CRR)** hacia `us-west-2` (`blog-backup-equipo-us-west-2`).
+  - **S3 Event Notifications** (`s3:ObjectRemoved:*` en prefijo `images/`) vinculado a **Amazon SNS** (`NotificacionEliminacionImagenes`) para alerta inmediata por correo.
 
 ---
 
